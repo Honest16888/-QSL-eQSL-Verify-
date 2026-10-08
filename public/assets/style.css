@@ -1,0 +1,308 @@
+/* ==========================================================================
+   电子 QSL 交换验证系统 —— 样式表
+   ========================================================================== */
+
+:root {
+  --bg:        #f4f6fa;
+  --panel:     #ffffff;
+  --ink:       #0f172a;
+  --ink-soft:  #334155;
+  --muted:     #64748b;
+  --line:      #e3e8ef;
+  --line-soft: #eef2f7;
+  --brand:     #0b6bcb;
+  --brand-dk:  #07539f;
+  --brand-tint:#e8f1fd;
+  --accent:    #d97706;
+  --accent-tint:#fef4e6;
+  --ok:        #15803d;
+  --ok-tint:   #e8f6ec;
+  --warn:      #b45309;
+  --warn-tint: #fdf3e3;
+  --danger:    #dc2626;
+  --danger-tint:#fdecec;
+  --radius:    12px;
+  --shadow:    0 1px 2px rgba(15,23,42,.05), 0 6px 20px rgba(15,23,42,.05);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0; padding: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font: 15px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC",
+        "Microsoft YaHei", "Hiragino Sans GB", Roboto, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: var(--brand); text-decoration: none; }
+a:hover { color: var(--brand-dk); text-decoration: underline; }
+
+.wrap { max-width: 1120px; margin: 0 auto; padding: 0 20px; }
+.main { padding: 26px 20px 56px; min-height: 60vh; }
+.muted { color: var(--muted); }
+.small { font-size: 13px; }
+.mono  { font-family: ui-monospace, "SFMono-Regular", "Cascadia Mono", Consolas, monospace; }
+
+/* ---------------------------------- 顶栏 --------------------------------- */
+.topbar {
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; z-index: 40;
+}
+.bar-inner { display: flex; align-items: center; gap: 18px; height: 64px; }
+.brand { display: flex; align-items: center; gap: 11px; color: var(--ink); }
+.brand:hover { text-decoration: none; }
+.brand-mark {
+  width: 38px; height: 38px; border-radius: 9px; flex: 0 0 38px;
+  background: linear-gradient(135deg, var(--brand), #22a3e0);
+  color: #fff; font-weight: 800; font-size: 13px; letter-spacing: .5px;
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 2px 8px rgba(11,107,203,.28);
+}
+.brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+.brand-text strong { font-size: 15px; }
+.brand-text small { color: var(--muted); font-size: 12px; }
+
+.nav { margin-left: auto; display: flex; align-items: center; gap: 4px; flex-wrap: wrap; }
+.nav a {
+  padding: 7px 12px; border-radius: 8px; color: var(--ink-soft);
+  font-size: 14px; font-weight: 500;
+}
+.nav a:hover { background: var(--line-soft); text-decoration: none; }
+.nav a.on { background: var(--brand-tint); color: var(--brand-dk); }
+.nav a.primary { background: var(--brand); color: #fff; }
+.nav a.primary:hover { background: var(--brand-dk); }
+.nav a.ghost { color: var(--muted); }
+.nav-toggle {
+  display: none; margin-left: auto; background: none; border: 1px solid var(--line);
+  border-radius: 8px; padding: 6px 11px; font-size: 18px; cursor: pointer; color: var(--ink);
+}
+
+/* ---------------------------------- 卡片 --------------------------------- */
+.card {
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 20px 22px; margin-bottom: 18px;
+}
+.card > h1, .card > h2, .card > h3 { margin-top: 0; }
+h1 { font-size: 22px; margin: 0 0 4px; }
+h2 { font-size: 17px; margin: 0 0 14px; }
+h3 { font-size: 15px; margin: 0 0 10px; }
+.page-head { display: flex; align-items: flex-end; gap: 14px; flex-wrap: wrap; margin-bottom: 18px; }
+.page-head .spacer { margin-left: auto; }
+.subtitle { color: var(--muted); font-size: 14px; margin: 0; }
+
+.grid { display: grid; gap: 18px; }
+.g2 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+.g3 { grid-template-columns: repeat(3, minmax(0,1fr)); }
+.g4 { grid-template-columns: repeat(4, minmax(0,1fr)); }
+
+/* ---------------------------------- 统计块 -------------------------------- */
+.stat {
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px 18px;
+}
+.stat .n { font-size: 26px; font-weight: 700; letter-spacing: -.5px; }
+.stat .k { color: var(--muted); font-size: 13px; }
+.stat.ok .n { color: var(--ok); }
+.stat.warn .n { color: var(--warn); }
+.stat.brand .n { color: var(--brand); }
+
+/* ---------------------------------- 按钮 --------------------------------- */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: 6px;
+  padding: 9px 16px; border-radius: 9px; border: 1px solid var(--line);
+  background: var(--panel); color: var(--ink); font-size: 14px; font-weight: 500;
+  cursor: pointer; text-decoration: none; transition: .15s;
+}
+.btn:hover { background: var(--line-soft); text-decoration: none; }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn.primary:hover { background: var(--brand-dk); }
+.btn.ok { background: var(--ok); border-color: var(--ok); color: #fff; }
+.btn.ok:hover { filter: brightness(.94); }
+.btn.danger { color: var(--danger); border-color: #f3c7c7; background: var(--danger-tint); }
+.btn.sm { padding: 5px 11px; font-size: 13px; border-radius: 7px; }
+.btn:disabled { opacity: .55; cursor: not-allowed; }
+.btn-row { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+/* ---------------------------------- 表单 --------------------------------- */
+label { display: block; font-size: 13px; font-weight: 600; color: var(--ink-soft); margin-bottom: 5px; }
+input[type=text], input[type=email], input[type=password], input[type=date],
+input[type=time], input[type=number], input[type=file], select, textarea {
+  width: 100%; padding: 9px 11px; border: 1px solid var(--line); border-radius: 9px;
+  background: #fff; color: var(--ink); font-size: 14px; font-family: inherit;
+  transition: border-color .15s, box-shadow .15s;
+}
+input:focus, select:focus, textarea:focus {
+  outline: none; border-color: var(--brand); box-shadow: 0 0 0 3px rgba(11,107,203,.13);
+}
+textarea { min-height: 84px; resize: vertical; }
+.field { margin-bottom: 14px; }
+.field .hint { font-size: 12px; color: var(--muted); margin-top: 4px; }
+.field .err { font-size: 12px; color: var(--danger); margin-top: 4px; }
+.field.errs input, .field.errs select { border-color: var(--danger); }
+.form-row { display: grid; gap: 14px; }
+.form-row.c2 { grid-template-columns: 1fr 1fr; }
+.form-row.c3 { grid-template-columns: 1fr 1fr 1fr; }
+.form-row.c4 { grid-template-columns: repeat(4, 1fr); }
+.checkline { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+.checkline input { width: auto; }
+
+/* ---------------------------------- 表格 --------------------------------- */
+.tablewrap { overflow-x: auto; }
+table.tbl { width: 100%; border-collapse: collapse; font-size: 14px; }
+table.tbl th, table.tbl td {
+  padding: 10px 12px; text-align: left; border-bottom: 1px solid var(--line-soft);
+  white-space: nowrap;
+}
+table.tbl th {
+  background: #fafbfd; color: var(--muted); font-size: 12px; font-weight: 600;
+  text-transform: uppercase; letter-spacing: .4px;
+}
+table.tbl tbody tr:hover { background: #fafbfd; }
+table.tbl td.wrap-cell { white-space: normal; }
+
+/* ---------------------------------- 徽章 --------------------------------- */
+.badge {
+  display: inline-block; padding: 2px 9px; border-radius: 999px;
+  font-size: 12px; font-weight: 600; line-height: 1.7;
+}
+.badge.ok   { background: var(--ok-tint);    color: var(--ok); }
+.badge.wait { background: var(--warn-tint);  color: var(--warn); }
+.badge.info { background: var(--brand-tint); color: var(--brand-dk); }
+.badge.gray { background: var(--line-soft);  color: var(--muted); }
+
+/* ---------------------------------- 提示 --------------------------------- */
+.flashes { margin-bottom: 16px; }
+.flash {
+  padding: 11px 15px; border-radius: 10px; margin-bottom: 8px; font-size: 14px;
+  border: 1px solid var(--line); background: var(--panel);
+}
+.flash.ok   { background: var(--ok-tint);    border-color: #c6e6d0; color: #14532d; }
+.flash.err  { background: var(--danger-tint);border-color: #f3c7c7; color: #991b1b; }
+.flash.warn { background: var(--warn-tint);  border-color: #f2d9ae; color: #92400e; }
+.empty {
+  padding: 42px 20px; text-align: center; color: var(--muted); font-size: 14px;
+  border: 1px dashed var(--line); border-radius: var(--radius); background: #fdfdfe;
+}
+
+/* ---------------------------------- 分页 --------------------------------- */
+.pager { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 14px; }
+.pager a {
+  min-width: 34px; text-align: center; padding: 6px 10px; border-radius: 8px;
+  border: 1px solid var(--line); background: #fff; font-size: 13px; color: var(--ink-soft);
+}
+.pager a.on { background: var(--brand); border-color: var(--brand); color: #fff; }
+
+/* ---------------------------------- 选项卡 -------------------------------- */
+.tabs { display: flex; gap: 6px; border-bottom: 1px solid var(--line); margin-bottom: 18px; flex-wrap: wrap; }
+.tabs a {
+  padding: 9px 15px; font-size: 14px; font-weight: 500; color: var(--muted);
+  border-bottom: 2px solid transparent; margin-bottom: -1px;
+}
+.tabs a.on { color: var(--brand-dk); border-bottom-color: var(--brand); }
+.tabs a:hover { text-decoration: none; color: var(--ink); }
+
+/* ---------------------------------- 筛选条 -------------------------------- */
+.filters {
+  display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;
+  background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 14px 16px; margin-bottom: 16px;
+}
+.filters .field { margin: 0; min-width: 130px; }
+.filters label { font-size: 12px; }
+
+/* ---------------------------------- QSL 卡片 ------------------------------ */
+.qslcard {
+  background: #fffdf8; border: 2px solid #d9c9a3; border-radius: 10px;
+  padding: 0; overflow: hidden; box-shadow: var(--shadow); position: relative;
+}
+.qslcard .inner { padding: 22px 24px; position: relative; z-index: 1; }
+.qslcard .hd {
+  display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap;
+  border-bottom: 2px solid #b58a3c; padding-bottom: 10px; margin-bottom: 14px;
+}
+.qslcard .hd .call {
+  font-size: 30px; font-weight: 800; letter-spacing: 1px; color: #7a3f0d;
+  font-family: ui-monospace, "Cascadia Mono", Consolas, monospace;
+}
+.qslcard .hd .to { font-size: 14px; color: #8a6d3b; }
+.qslcard .stamp {
+  position: absolute; top: 14px; right: 16px; text-align: center;
+  border: 2px dashed #c39b4e; border-radius: 6px; padding: 6px 10px;
+  color: #9a6b1f; font-size: 11px; transform: rotate(6deg); background: rgba(255,255,255,.7);
+}
+.qslcard dl { display: grid; grid-template-columns: 92px 1fr; gap: 6px 14px; margin: 0; font-size: 14px; }
+.qslcard dt { color: #8a6d3b; font-weight: 600; }
+.qslcard dd { margin: 0; color: #3b2f1e; }
+.qslcard .ft {
+  margin-top: 16px; padding-top: 12px; border-top: 1px dashed #cbb287;
+  display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap;
+  font-size: 13px; color: #8a6d3b;
+}
+.qslcard .confirm {
+  background: var(--ok-tint); border-top: 1px solid #c6e6d0; padding: 10px 24px;
+  font-size: 13px; color: #14532d; display: flex; justify-content: space-between; gap: 10px; flex-wrap: wrap;
+}
+.qslcard.withimg .inner {
+  background-size: cover; background-position: center;
+}
+.qslcard.withimg .inner::before {
+  content: ""; position: absolute; inset: 0; background: rgba(255,253,248,.86); z-index: -1;
+}
+
+/* ---------------------------------- 其他 --------------------------------- */
+.kv { display: grid; grid-template-columns: 130px 1fr; gap: 8px 16px; font-size: 14px; }
+.kv dt { color: var(--muted); }
+.kv dd { margin: 0; }
+.hr { height: 1px; background: var(--line); margin: 18px 0; border: 0; }
+.bars { display: grid; gap: 8px; }
+.bar { display: grid; grid-template-columns: 70px 1fr 46px; gap: 10px; align-items: center; font-size: 13px; }
+.bar .track { background: var(--line-soft); border-radius: 999px; height: 9px; overflow: hidden; }
+.bar .fill { background: linear-gradient(90deg, var(--brand), #4fb0e8); height: 100%; border-radius: 999px; }
+.bar .cnt { text-align: right; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 6px; }
+.chip {
+  background: var(--brand-tint); color: var(--brand-dk); border-radius: 999px;
+  padding: 3px 11px; font-size: 12.5px; font-weight: 600;
+}
+.chip.gray { background: var(--line-soft); color: var(--ink-soft); }
+.avatar {
+  width: 44px; height: 44px; border-radius: 10px; flex: 0 0 44px;
+  background: linear-gradient(135deg, #0b6bcb, #22a3e0); color: #fff;
+  display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 13px;
+}
+.partner { display: flex; align-items: center; gap: 12px; padding: 10px 0; border-bottom: 1px solid var(--line-soft); }
+.partner:last-child { border-bottom: 0; }
+
+.foot { border-top: 1px solid var(--line); background: var(--panel); padding: 18px 0; margin-top: 20px; }
+.foot-inner { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font-size: 13px; color: var(--muted); }
+.utc-clock b { font-family: ui-monospace, Consolas, monospace; color: var(--ink); }
+
+.note {
+  background: var(--brand-tint); border: 1px solid #cfe1f8; border-radius: 10px;
+  padding: 12px 16px; font-size: 13.5px; color: #0b3e78;
+}
+.note.warn { background: var(--warn-tint); border-color: #f2d9ae; color: #92400e; }
+
+/* ---------------------------------- 响应式 -------------------------------- */
+@media (max-width: 900px) {
+  .g4 { grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .g3 { grid-template-columns: 1fr; }
+  .form-row.c4 { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 720px) {
+  .g2, .g4 { grid-template-columns: 1fr; }
+  .form-row.c2, .form-row.c3, .form-row.c4 { grid-template-columns: 1fr; }
+  .nav {
+    position: absolute; top: 64px; left: 0; right: 0; background: #fff;
+    border-bottom: 1px solid var(--line); flex-direction: column; align-items: stretch;
+    padding: 8px 20px 14px; display: none;
+  }
+  .nav.open { display: flex; }
+  .nav-toggle { display: block; }
+  .qslcard dl { grid-template-columns: 80px 1fr; }
+  .qslcard .hd .call { font-size: 24px; }
+}
