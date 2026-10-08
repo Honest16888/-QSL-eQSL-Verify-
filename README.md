@@ -186,5 +186,5 @@ php cli/check_schema.php   # schema.sql 结构校验
 - **API**：可加 `public/api/verify.php` 输出 JSON，供第三方查询。
 
 ---
-
+DE BH6RGQ
 73 & Good DX! 📡
